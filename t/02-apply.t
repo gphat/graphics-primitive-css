@@ -2,9 +2,9 @@ use Test::More tests => 19;
 
 use Graphics::Primitive::Container;
 use Graphics::Primitive::TextBox;
-use Graphics::Primitive::Styler;
+use Graphics::Primitive::CSS;
 
-my $styler = Graphics::Primitive::Styler->new(
+my $styler = Graphics::Primitive::CSS->new(
     styles => '
     .foo {
         background-color: #fff;

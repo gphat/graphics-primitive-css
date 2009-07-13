@@ -1,4 +1,4 @@
-# This Makefile is for the Graphics::Primitive::Styler extension to perl.
+# This Makefile is for the Graphics::Primitive::CSS extension to perl.
 #
 # It was generated automatically by MakeMaker version
 # 6.52 (Revision: 65199) from the contents of
@@ -10,11 +10,11 @@
 #
 #   MakeMaker Parameters:
 
-#     ABSTRACT => q[Styles for Graphics::Primitive documents]
+#     ABSTRACT => q[Style Graphics::Primitive documents with CSS]
 #     AUTHOR => q[Cory G Watson <gphat@cpan.org>]
 #     DIR => []
-#     DISTNAME => q[Graphics-Primitive-Styler]
-#     NAME => q[Graphics::Primitive::Styler]
+#     DISTNAME => q[Graphics-Primitive-CSS]
+#     NAME => q[Graphics::Primitive::CSS]
 #     NO_META => q[1]
 #     PL_FILES => {  }
 #     PREREQ_PM => { Test::More=>q[0], CSS::DOM=>q[0.06], Graphics::Primitive=>q[0.44], ExtUtils::MakeMaker=>q[6.42], Graphics::Color=>q[0.23], Moose=>q[0.87] }
@@ -57,8 +57,8 @@ VENDORLIBEXP = /opt/local/lib/perl5/vendor_perl/5.10.0
 AR_STATIC_ARGS = cr
 DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
-NAME = Graphics::Primitive::Styler
-NAME_SYM = Graphics_Primitive_Styler
+NAME = Graphics::Primitive::CSS
+NAME_SYM = Graphics_Primitive_CSS
 VERSION = 0.01
 VERSION_MACRO = VERSION
 VERSION_SYM = 0_01
@@ -147,8 +147,8 @@ MM_REVISION = 65199
 # PARENT_NAME = NAME without BASEEXT and no trailing :: (eg Foo::Bar)
 # DLBASE  = Basename part of dynamic library. May be just equal BASEEXT.
 MAKE = make
-FULLEXT = Graphics/Primitive/Styler
-BASEEXT = Styler
+FULLEXT = Graphics/Primitive/CSS
+BASEEXT = CSS
 PARENT_NAME = Graphics::Primitive
 DLBASE = $(BASEEXT)
 VERSION_FROM = 
@@ -163,7 +163,7 @@ C_FILES  =
 O_FILES  = 
 H_FILES  = 
 MAN1PODS = 
-MAN3PODS = lib/Graphics/Primitive/Styler.pm
+MAN3PODS = lib/Graphics/Primitive/CSS.pm
 
 # Where is the Config information that we are using/depend on
 CONFIGDEP = $(PERL_ARCHLIB)$(DFSEP)Config.pm $(PERL_INC)$(DFSEP)config.h
@@ -185,10 +185,10 @@ PERL_ARCHIVE       =
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = lib/Graphics/Primitive/Styler.pm
+TO_INST_PM = lib/Graphics/Primitive/CSS.pm
 
-PM_TO_BLIB = lib/Graphics/Primitive/Styler.pm \
-	blib/lib/Graphics/Primitive/Styler.pm
+PM_TO_BLIB = lib/Graphics/Primitive/CSS.pm \
+	blib/lib/Graphics/Primitive/CSS.pm
 
 
 # --- MakeMaker platform_constants section:
@@ -256,8 +256,8 @@ CI = ci -u
 RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
-DISTNAME = Graphics-Primitive-Styler
-DISTVNAME = Graphics-Primitive-Styler-0.01
+DISTNAME = Graphics-Primitive-CSS
+DISTVNAME = Graphics-Primitive-CSS-0.01
 
 
 # --- MakeMaker macro section:
@@ -410,9 +410,9 @@ POD2MAN = $(POD2MAN_EXE)
 
 
 manifypods : pure_all  \
-	lib/Graphics/Primitive/Styler.pm
+	lib/Graphics/Primitive/CSS.pm
 	$(NOECHO) $(POD2MAN) --section=3 --perm_rw=$(PERM_RW) \
-	  lib/Graphics/Primitive/Styler.pm $(INST_MAN3DIR)/Graphics::Primitive::Styler.$(MAN3EXT) 
+	  lib/Graphics/Primitive/CSS.pm $(INST_MAN3DIR)/Graphics::Primitive::CSS.$(MAN3EXT) 
 
 
 
@@ -766,7 +766,7 @@ testdb_static :: testdb_dynamic
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
 	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.01">' > $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT>Styles for Graphics::Primitive documents</ABSTRACT>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>Style Graphics::Primitive documents with CSS</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Cory G Watson &lt;gphat@cpan.org&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="CSS::DOM" VERSION="0.06" />' >> $(DISTNAME).ppd
@@ -785,7 +785,7 @@ ppd :
 
 pm_to_blib : $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
-	  lib/Graphics/Primitive/Styler.pm blib/lib/Graphics/Primitive/Styler.pm 
+	  lib/Graphics/Primitive/CSS.pm blib/lib/Graphics/Primitive/CSS.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
 

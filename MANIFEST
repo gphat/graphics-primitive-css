@@ -8,7 +8,7 @@ inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
-lib/Graphics/Primitive/Styler.pm
+lib/Graphics/Primitive/CSS.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml

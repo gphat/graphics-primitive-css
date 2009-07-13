@@ -1,7 +1,7 @@
 use inc::Module::Install;
 
-name     'Graphics-Primitive-Styler';
-all_from 'lib/Graphics/Primitive/Styler.pm';
+name     'Graphics-Primitive-CSS';
+all_from 'lib/Graphics/Primitive/CSS.pm';
 author   'Cory G Watson <gphat@cpan.org>';
 license  'perl';
 
