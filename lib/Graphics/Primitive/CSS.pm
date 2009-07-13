@@ -1,9 +1,10 @@
 package Graphics::Primitive::CSS;
 use Moose;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Carp qw(carp);
+use Check::ISA;
 use CSS::DOM;
 use Graphics::Color::RGB;
 
@@ -50,6 +51,13 @@ sub apply {
                     return 0 unless defined($comp->name);
                     return $comp->name eq $name;
                 });
+            } elsif($selector =~ 'textbox') {
+                # Handle "elements"
+                $comps = $doc->find(sub {
+                    my ($comp, $const) = @_;
+
+                    return obj($comp, 'Graphics::Primitive::TextBox');
+                });
             }
 
             return 1 unless defined($comps) && $comps->component_count;
@@ -81,6 +89,16 @@ sub apply {
                          my ($comp, $const) = @_; $comp->border->bottom->width($1);
                     });
                 }
+            } elsif($prop eq 'border-color') {
+
+                my $color = $self->_process_color($val);
+                next unless defined($color);
+
+                $comps->each(sub {
+                     my ($comp, $const) = @_;
+                     $comp->border->color($color);
+                });
+
             } elsif($prop eq 'border-left-color') {
 
                 my $color = $self->_process_color($val);
@@ -346,8 +364,9 @@ Graphics::Primitive document using CSS.
 
 =head1 SELECTORS
 
-Graphics::Primitive::CSS currently supports a class (.classname)
-and 'id' (#name) selector.  It does not supported nested selectors (yet).
+Graphics::Primitive::CSS currently supports a class (.classname), element
+(only textbox currently), and 'id' (#name) selector.  It does not support
+nested selectors (yet).
 
 =head1 COLORS
 
@@ -364,6 +383,10 @@ ways.
 =item background-color, color
 
 Background and foreground color
+
+=item border-color
+
+Color of all borders. B<Note: Only supports a single color value currently.>
 
 =item border-color-top, border-color-right, border-color-bottom, border-color-left
 
@@ -383,6 +406,14 @@ Size of font as points (e.g. 7pt).  Family name (does not support lists!)
 are supported.
 
 =item margin-top, margin-left, margin-bottom, margin-right
+
+=item padding
+
+2 value (top, left) and 4 value (top, right, bottom, left).  Only pixels
+are supported.
+
+=item padding-top, padding-left, padding-bottom, padding-right
+
 
 Only pixels are supported.
 
