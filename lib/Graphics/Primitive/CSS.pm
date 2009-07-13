@@ -228,6 +228,49 @@ sub apply {
                          my ($comp, $const) = @_; $comp->margins->top($1);
                     });
                 }
+
+            } elsif($prop eq 'padding') {
+                my ($top, $right, $bottom, $left);
+                if($val =~ /^(\d+)px (\d+)px$/) {
+                    $top = $1; $bottom = $1;
+                    $right = $2; $left = $2;
+                } elsif($val =~ /^(\d+)px (\d+)px (\d+)px (\d+)px$/) {
+                    $top = $1; $right = $2;
+                    $bottom = $3; $left = $4;
+                }
+
+                $comps->each(sub {
+                     my ($comp, $const) = @_;
+                     $comp->padding->top($top);
+                     $comp->padding->right($right);
+                     $comp->padding->bottom($bottom);
+                     $comp->padding->left($left);
+                });
+            } elsif($prop eq 'padding-bottom') {
+                if($val =~ /(\d+)px/) {
+                    $comps->each(sub {
+                         my ($comp, $const) = @_; $comp->padding->bottom($1);
+                    });
+                }
+            } elsif($prop eq 'padding-left') {
+                if($val =~ /(\d+)px/) {
+                    $comps->each(sub {
+                         my ($comp, $const) = @_; $comp->padding->left($1);
+                    });
+                }
+            } elsif($prop eq 'padding-right') {
+                if($val =~ /(\d+)px/) {
+                    $comps->each(sub {
+                         my ($comp, $const) = @_; $comp->padding->right($1);
+                    });
+                }
+            } elsif($prop eq 'padding-top') {
+                if($val =~ /(\d+)px/) {
+                    $comps->each(sub {
+                         my ($comp, $const) = @_; $comp->padding->top($1);
+                    });
+                }
+
             } elsif($prop eq 'text-align') {
                 $comps->each(sub {
                      my ($comp, $const) = @_; $comp->horizontal_alignment($val);

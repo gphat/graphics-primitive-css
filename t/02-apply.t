@@ -1,4 +1,4 @@
-use Test::More tests => 19;
+use Test::More tests => 23;
 
 use Graphics::Primitive::Container;
 use Graphics::Primitive::TextBox;
@@ -13,6 +13,7 @@ my $styler = Graphics::Primitive::CSS->new(
         font-family: Arial;
         font-weight: bold;
         margin-left: 2px;
+        padding: 1px 2px 3px 4px;
         text-align: center;
         vertical-align: center;
     }
@@ -45,6 +46,11 @@ cmp_ok($tbox1->font->family, 'eq', 'Arial', 'font-family applied');
 cmp_ok($tbox1->font->weight, 'eq', 'bold', 'font-weight applied');
 cmp_ok($tbox1->horizontal_alignment, 'eq', 'center', 'text-align applied');
 cmp_ok($tbox1->vertical_alignment, 'eq', 'center', 'vertical-align applied');
+cmp_ok($tbox1->padding->top, '==', 1, 'padding (top) applied');
+cmp_ok($tbox1->padding->right, '==', 2, 'padding (right) applied');
+cmp_ok($tbox1->padding->bottom, '==', 3, 'padding (bottom) applied');
+cmp_ok($tbox1->padding->left, '==', 4, 'padding (left) applied');
+
 
 cmp_ok($tbox2->background_color->as_css_hex, 'eq', '#f0f8ff', 'name background_color applied');
 cmp_ok($tbox2->border->bottom->width, '==', 1, 'border-top-width applied');
